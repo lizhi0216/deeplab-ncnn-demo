@@ -20,7 +20,7 @@
    ppq/deeplabtest.py (torch model quantize)  
    ncnnint8 (platform)
    
-9. model_param  
+9. model_param:  
    pretrained_weight.onnx  
    pretrained_weight.param  
    pretrained_weight.bin  
