@@ -1,0 +1,3 @@
+/home/disk1/fxq/lianghua/ncnn-demo/CMakeFiles/deeplab.dir
+/home/disk1/fxq/lianghua/ncnn-demo/CMakeFiles/edit_cache.dir
+/home/disk1/fxq/lianghua/ncnn-demo/CMakeFiles/rebuild_cache.dir
