@@ -13,6 +13,13 @@
 4. inference file：  
    src/deeplab.cpp 
 5. quantize tools：  
-   ppq  
-   ncnn 
+   ppq/deeplab2ncnn.py (onnx quantize)
+   ppq/deeplabtest.py (torch model quantize)  
+   ncnnint8 (platform)
+6. model_param  
+   pretrained_weight.onnx  
+
+   pretrained_weight.param  
+
+   pretrained_weight.bin  
      
