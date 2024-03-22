@@ -1,0 +1,162 @@
+7767517
+160 181
+Input            images                   0 1 images
+Convolution      /backbone/conv1/Conv     1 1 images /backbone/conv1/Conv_output_0 0=64 1=7 11=7 2=1 12=1 3=2 13=2 4=3 14=3 15=3 16=3 5=1 6=9408
+ReLU             /backbone/relu/Relu      1 1 /backbone/conv1/Conv_output_0 /backbone/relu/Relu_output_0
+Pooling          /backbone/maxpool/MaxPool 1 1 /backbone/relu/Relu_output_0 /backbone/maxpool/MaxPool_output_0 0=0 1=3 11=3 2=2 12=2 3=1 13=1 14=1 15=1 5=1
+Split            splitncnn_0              1 2 /backbone/maxpool/MaxPool_output_0 /backbone/maxpool/MaxPool_output_0_splitncnn_0 /backbone/maxpool/MaxPool_output_0_splitncnn_1
+Convolution      /backbone/layer1/layer1.0/conv1/Conv 1 1 /backbone/maxpool/MaxPool_output_0_splitncnn_1 /backbone/layer1/layer1.0/conv1/Conv_output_0 0=64 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=4096
+Convolution      /backbone/layer1/layer1.0/downsample/downsample.0/Conv 1 1 /backbone/maxpool/MaxPool_output_0_splitncnn_0 /backbone/layer1/layer1.0/downsample/downsample.0/Conv_output_0 0=256 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=16384
+ReLU             /backbone/layer1/layer1.0/relu/Relu 1 1 /backbone/layer1/layer1.0/conv1/Conv_output_0 /backbone/layer1/layer1.0/relu/Relu_output_0
+Convolution      /backbone/layer1/layer1.0/conv2/Conv 1 1 /backbone/layer1/layer1.0/relu/Relu_output_0 /backbone/layer1/layer1.0/conv2/Conv_output_0 0=64 1=3 11=3 2=1 12=1 3=1 13=1 4=1 14=1 15=1 16=1 5=1 6=36864
+ReLU             /backbone/layer1/layer1.0/relu_1/Relu 1 1 /backbone/layer1/layer1.0/conv2/Conv_output_0 /backbone/layer1/layer1.0/relu_1/Relu_output_0
+Convolution      /backbone/layer1/layer1.0/conv3/Conv 1 1 /backbone/layer1/layer1.0/relu_1/Relu_output_0 /backbone/layer1/layer1.0/conv3/Conv_output_0 0=256 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=16384
+BinaryOp         /backbone/layer1/layer1.0/Add 2 1 /backbone/layer1/layer1.0/conv3/Conv_output_0 /backbone/layer1/layer1.0/downsample/downsample.0/Conv_output_0 /backbone/layer1/layer1.0/Add_output_0 0=0
+ReLU             /backbone/layer1/layer1.0/relu_2/Relu 1 1 /backbone/layer1/layer1.0/Add_output_0 /backbone/layer1/layer1.0/relu_2/Relu_output_0
+Split            splitncnn_1              1 2 /backbone/layer1/layer1.0/relu_2/Relu_output_0 /backbone/layer1/layer1.0/relu_2/Relu_output_0_splitncnn_0 /backbone/layer1/layer1.0/relu_2/Relu_output_0_splitncnn_1
+Convolution      /backbone/layer1/layer1.1/conv1/Conv 1 1 /backbone/layer1/layer1.0/relu_2/Relu_output_0_splitncnn_1 /backbone/layer1/layer1.1/conv1/Conv_output_0 0=64 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=16384
+ReLU             /backbone/layer1/layer1.1/relu/Relu 1 1 /backbone/layer1/layer1.1/conv1/Conv_output_0 /backbone/layer1/layer1.1/relu/Relu_output_0
+Convolution      /backbone/layer1/layer1.1/conv2/Conv 1 1 /backbone/layer1/layer1.1/relu/Relu_output_0 /backbone/layer1/layer1.1/conv2/Conv_output_0 0=64 1=3 11=3 2=1 12=1 3=1 13=1 4=1 14=1 15=1 16=1 5=1 6=36864
+ReLU             /backbone/layer1/layer1.1/relu_1/Relu 1 1 /backbone/layer1/layer1.1/conv2/Conv_output_0 /backbone/layer1/layer1.1/relu_1/Relu_output_0
+Convolution      /backbone/layer1/layer1.1/conv3/Conv 1 1 /backbone/layer1/layer1.1/relu_1/Relu_output_0 /backbone/layer1/layer1.1/conv3/Conv_output_0 0=256 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=16384
+BinaryOp         /backbone/layer1/layer1.1/Add 2 1 /backbone/layer1/layer1.1/conv3/Conv_output_0 /backbone/layer1/layer1.0/relu_2/Relu_output_0_splitncnn_0 /backbone/layer1/layer1.1/Add_output_0 0=0
+ReLU             /backbone/layer1/layer1.1/relu_2/Relu 1 1 /backbone/layer1/layer1.1/Add_output_0 /backbone/layer1/layer1.1/relu_2/Relu_output_0
+Split            splitncnn_2              1 2 /backbone/layer1/layer1.1/relu_2/Relu_output_0 /backbone/layer1/layer1.1/relu_2/Relu_output_0_splitncnn_0 /backbone/layer1/layer1.1/relu_2/Relu_output_0_splitncnn_1
+Convolution      /backbone/layer1/layer1.2/conv1/Conv 1 1 /backbone/layer1/layer1.1/relu_2/Relu_output_0_splitncnn_1 /backbone/layer1/layer1.2/conv1/Conv_output_0 0=64 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=16384
+ReLU             /backbone/layer1/layer1.2/relu/Relu 1 1 /backbone/layer1/layer1.2/conv1/Conv_output_0 /backbone/layer1/layer1.2/relu/Relu_output_0
+Convolution      /backbone/layer1/layer1.2/conv2/Conv 1 1 /backbone/layer1/layer1.2/relu/Relu_output_0 /backbone/layer1/layer1.2/conv2/Conv_output_0 0=64 1=3 11=3 2=1 12=1 3=1 13=1 4=1 14=1 15=1 16=1 5=1 6=36864
+ReLU             /backbone/layer1/layer1.2/relu_1/Relu 1 1 /backbone/layer1/layer1.2/conv2/Conv_output_0 /backbone/layer1/layer1.2/relu_1/Relu_output_0
+Convolution      /backbone/layer1/layer1.2/conv3/Conv 1 1 /backbone/layer1/layer1.2/relu_1/Relu_output_0 /backbone/layer1/layer1.2/conv3/Conv_output_0 0=256 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=16384
+BinaryOp         /backbone/layer1/layer1.2/Add 2 1 /backbone/layer1/layer1.2/conv3/Conv_output_0 /backbone/layer1/layer1.1/relu_2/Relu_output_0_splitncnn_0 /backbone/layer1/layer1.2/Add_output_0 0=0
+ReLU             /backbone/layer1/layer1.2/relu_2/Relu 1 1 /backbone/layer1/layer1.2/Add_output_0 /backbone/layer1/layer1.2/relu_2/Relu_output_0
+Split            splitncnn_3              1 2 /backbone/layer1/layer1.2/relu_2/Relu_output_0 /backbone/layer1/layer1.2/relu_2/Relu_output_0_splitncnn_0 /backbone/layer1/layer1.2/relu_2/Relu_output_0_splitncnn_1
+Convolution      /backbone/layer2/layer2.0/conv1/Conv 1 1 /backbone/layer1/layer1.2/relu_2/Relu_output_0_splitncnn_1 /backbone/layer2/layer2.0/conv1/Conv_output_0 0=128 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=32768
+Convolution      /backbone/layer2/layer2.0/downsample/downsample.0/Conv 1 1 /backbone/layer1/layer1.2/relu_2/Relu_output_0_splitncnn_0 /backbone/layer2/layer2.0/downsample/downsample.0/Conv_output_0 0=512 1=1 11=1 2=1 12=1 3=2 13=2 4=0 14=0 15=0 16=0 5=1 6=131072
+ReLU             /backbone/layer2/layer2.0/relu/Relu 1 1 /backbone/layer2/layer2.0/conv1/Conv_output_0 /backbone/layer2/layer2.0/relu/Relu_output_0
+Convolution      /backbone/layer2/layer2.0/conv2/Conv 1 1 /backbone/layer2/layer2.0/relu/Relu_output_0 /backbone/layer2/layer2.0/conv2/Conv_output_0 0=128 1=3 11=3 2=1 12=1 3=2 13=2 4=1 14=1 15=1 16=1 5=1 6=147456
+ReLU             /backbone/layer2/layer2.0/relu_1/Relu 1 1 /backbone/layer2/layer2.0/conv2/Conv_output_0 /backbone/layer2/layer2.0/relu_1/Relu_output_0
+Convolution      /backbone/layer2/layer2.0/conv3/Conv 1 1 /backbone/layer2/layer2.0/relu_1/Relu_output_0 /backbone/layer2/layer2.0/conv3/Conv_output_0 0=512 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=65536
+BinaryOp         /backbone/layer2/layer2.0/Add 2 1 /backbone/layer2/layer2.0/conv3/Conv_output_0 /backbone/layer2/layer2.0/downsample/downsample.0/Conv_output_0 /backbone/layer2/layer2.0/Add_output_0 0=0
+ReLU             /backbone/layer2/layer2.0/relu_2/Relu 1 1 /backbone/layer2/layer2.0/Add_output_0 /backbone/layer2/layer2.0/relu_2/Relu_output_0
+Split            splitncnn_4              1 2 /backbone/layer2/layer2.0/relu_2/Relu_output_0 /backbone/layer2/layer2.0/relu_2/Relu_output_0_splitncnn_0 /backbone/layer2/layer2.0/relu_2/Relu_output_0_splitncnn_1
+Convolution      /backbone/layer2/layer2.1/conv1/Conv 1 1 /backbone/layer2/layer2.0/relu_2/Relu_output_0_splitncnn_1 /backbone/layer2/layer2.1/conv1/Conv_output_0 0=128 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=65536
+ReLU             /backbone/layer2/layer2.1/relu/Relu 1 1 /backbone/layer2/layer2.1/conv1/Conv_output_0 /backbone/layer2/layer2.1/relu/Relu_output_0
+Convolution      /backbone/layer2/layer2.1/conv2/Conv 1 1 /backbone/layer2/layer2.1/relu/Relu_output_0 /backbone/layer2/layer2.1/conv2/Conv_output_0 0=128 1=3 11=3 2=1 12=1 3=1 13=1 4=1 14=1 15=1 16=1 5=1 6=147456
+ReLU             /backbone/layer2/layer2.1/relu_1/Relu 1 1 /backbone/layer2/layer2.1/conv2/Conv_output_0 /backbone/layer2/layer2.1/relu_1/Relu_output_0
+Convolution      /backbone/layer2/layer2.1/conv3/Conv 1 1 /backbone/layer2/layer2.1/relu_1/Relu_output_0 /backbone/layer2/layer2.1/conv3/Conv_output_0 0=512 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=65536
+BinaryOp         /backbone/layer2/layer2.1/Add 2 1 /backbone/layer2/layer2.1/conv3/Conv_output_0 /backbone/layer2/layer2.0/relu_2/Relu_output_0_splitncnn_0 /backbone/layer2/layer2.1/Add_output_0 0=0
+ReLU             /backbone/layer2/layer2.1/relu_2/Relu 1 1 /backbone/layer2/layer2.1/Add_output_0 /backbone/layer2/layer2.1/relu_2/Relu_output_0
+Split            splitncnn_5              1 2 /backbone/layer2/layer2.1/relu_2/Relu_output_0 /backbone/layer2/layer2.1/relu_2/Relu_output_0_splitncnn_0 /backbone/layer2/layer2.1/relu_2/Relu_output_0_splitncnn_1
+Convolution      /backbone/layer2/layer2.2/conv1/Conv 1 1 /backbone/layer2/layer2.1/relu_2/Relu_output_0_splitncnn_1 /backbone/layer2/layer2.2/conv1/Conv_output_0 0=128 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=65536
+ReLU             /backbone/layer2/layer2.2/relu/Relu 1 1 /backbone/layer2/layer2.2/conv1/Conv_output_0 /backbone/layer2/layer2.2/relu/Relu_output_0
+Convolution      /backbone/layer2/layer2.2/conv2/Conv 1 1 /backbone/layer2/layer2.2/relu/Relu_output_0 /backbone/layer2/layer2.2/conv2/Conv_output_0 0=128 1=3 11=3 2=1 12=1 3=1 13=1 4=1 14=1 15=1 16=1 5=1 6=147456
+ReLU             /backbone/layer2/layer2.2/relu_1/Relu 1 1 /backbone/layer2/layer2.2/conv2/Conv_output_0 /backbone/layer2/layer2.2/relu_1/Relu_output_0
+Convolution      /backbone/layer2/layer2.2/conv3/Conv 1 1 /backbone/layer2/layer2.2/relu_1/Relu_output_0 /backbone/layer2/layer2.2/conv3/Conv_output_0 0=512 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=65536
+BinaryOp         /backbone/layer2/layer2.2/Add 2 1 /backbone/layer2/layer2.2/conv3/Conv_output_0 /backbone/layer2/layer2.1/relu_2/Relu_output_0_splitncnn_0 /backbone/layer2/layer2.2/Add_output_0 0=0
+ReLU             /backbone/layer2/layer2.2/relu_2/Relu 1 1 /backbone/layer2/layer2.2/Add_output_0 /backbone/layer2/layer2.2/relu_2/Relu_output_0
+Split            splitncnn_6              1 2 /backbone/layer2/layer2.2/relu_2/Relu_output_0 /backbone/layer2/layer2.2/relu_2/Relu_output_0_splitncnn_0 /backbone/layer2/layer2.2/relu_2/Relu_output_0_splitncnn_1
+Convolution      /backbone/layer2/layer2.3/conv1/Conv 1 1 /backbone/layer2/layer2.2/relu_2/Relu_output_0_splitncnn_1 /backbone/layer2/layer2.3/conv1/Conv_output_0 0=128 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=65536
+ReLU             /backbone/layer2/layer2.3/relu/Relu 1 1 /backbone/layer2/layer2.3/conv1/Conv_output_0 /backbone/layer2/layer2.3/relu/Relu_output_0
+Convolution      /backbone/layer2/layer2.3/conv2/Conv 1 1 /backbone/layer2/layer2.3/relu/Relu_output_0 /backbone/layer2/layer2.3/conv2/Conv_output_0 0=128 1=3 11=3 2=1 12=1 3=1 13=1 4=1 14=1 15=1 16=1 5=1 6=147456
+ReLU             /backbone/layer2/layer2.3/relu_1/Relu 1 1 /backbone/layer2/layer2.3/conv2/Conv_output_0 /backbone/layer2/layer2.3/relu_1/Relu_output_0
+Convolution      /backbone/layer2/layer2.3/conv3/Conv 1 1 /backbone/layer2/layer2.3/relu_1/Relu_output_0 /backbone/layer2/layer2.3/conv3/Conv_output_0 0=512 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=65536
+BinaryOp         /backbone/layer2/layer2.3/Add 2 1 /backbone/layer2/layer2.3/conv3/Conv_output_0 /backbone/layer2/layer2.2/relu_2/Relu_output_0_splitncnn_0 /backbone/layer2/layer2.3/Add_output_0 0=0
+ReLU             /backbone/layer2/layer2.3/relu_2/Relu 1 1 /backbone/layer2/layer2.3/Add_output_0 /backbone/layer2/layer2.3/relu_2/Relu_output_0
+Split            splitncnn_7              1 2 /backbone/layer2/layer2.3/relu_2/Relu_output_0 /backbone/layer2/layer2.3/relu_2/Relu_output_0_splitncnn_0 /backbone/layer2/layer2.3/relu_2/Relu_output_0_splitncnn_1
+Convolution      /backbone/layer3/layer3.0/conv1/Conv 1 1 /backbone/layer2/layer2.3/relu_2/Relu_output_0_splitncnn_1 /backbone/layer3/layer3.0/conv1/Conv_output_0 0=256 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=131072
+Convolution      /backbone/layer3/layer3.0/downsample/downsample.0/Conv 1 1 /backbone/layer2/layer2.3/relu_2/Relu_output_0_splitncnn_0 /backbone/layer3/layer3.0/downsample/downsample.0/Conv_output_0 0=1024 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=524288
+ReLU             /backbone/layer3/layer3.0/relu/Relu 1 1 /backbone/layer3/layer3.0/conv1/Conv_output_0 /backbone/layer3/layer3.0/relu/Relu_output_0
+Convolution      /backbone/layer3/layer3.0/conv2/Conv 1 1 /backbone/layer3/layer3.0/relu/Relu_output_0 /backbone/layer3/layer3.0/conv2/Conv_output_0 0=256 1=3 11=3 2=1 12=1 3=1 13=1 4=1 14=1 15=1 16=1 5=1 6=589824
+ReLU             /backbone/layer3/layer3.0/relu_1/Relu 1 1 /backbone/layer3/layer3.0/conv2/Conv_output_0 /backbone/layer3/layer3.0/relu_1/Relu_output_0
+Convolution      /backbone/layer3/layer3.0/conv3/Conv 1 1 /backbone/layer3/layer3.0/relu_1/Relu_output_0 /backbone/layer3/layer3.0/conv3/Conv_output_0 0=1024 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=262144
+BinaryOp         /backbone/layer3/layer3.0/Add 2 1 /backbone/layer3/layer3.0/conv3/Conv_output_0 /backbone/layer3/layer3.0/downsample/downsample.0/Conv_output_0 /backbone/layer3/layer3.0/Add_output_0 0=0
+ReLU             /backbone/layer3/layer3.0/relu_2/Relu 1 1 /backbone/layer3/layer3.0/Add_output_0 /backbone/layer3/layer3.0/relu_2/Relu_output_0
+Split            splitncnn_8              1 2 /backbone/layer3/layer3.0/relu_2/Relu_output_0 /backbone/layer3/layer3.0/relu_2/Relu_output_0_splitncnn_0 /backbone/layer3/layer3.0/relu_2/Relu_output_0_splitncnn_1
+Convolution      /backbone/layer3/layer3.1/conv1/Conv 1 1 /backbone/layer3/layer3.0/relu_2/Relu_output_0_splitncnn_1 /backbone/layer3/layer3.1/conv1/Conv_output_0 0=256 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=262144
+ReLU             /backbone/layer3/layer3.1/relu/Relu 1 1 /backbone/layer3/layer3.1/conv1/Conv_output_0 /backbone/layer3/layer3.1/relu/Relu_output_0
+Convolution      /backbone/layer3/layer3.1/conv2/Conv 1 1 /backbone/layer3/layer3.1/relu/Relu_output_0 /backbone/layer3/layer3.1/conv2/Conv_output_0 0=256 1=3 11=3 2=2 12=2 3=1 13=1 4=2 14=2 15=2 16=2 5=1 6=589824
+ReLU             /backbone/layer3/layer3.1/relu_1/Relu 1 1 /backbone/layer3/layer3.1/conv2/Conv_output_0 /backbone/layer3/layer3.1/relu_1/Relu_output_0
+Convolution      /backbone/layer3/layer3.1/conv3/Conv 1 1 /backbone/layer3/layer3.1/relu_1/Relu_output_0 /backbone/layer3/layer3.1/conv3/Conv_output_0 0=1024 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=262144
+BinaryOp         /backbone/layer3/layer3.1/Add 2 1 /backbone/layer3/layer3.1/conv3/Conv_output_0 /backbone/layer3/layer3.0/relu_2/Relu_output_0_splitncnn_0 /backbone/layer3/layer3.1/Add_output_0 0=0
+ReLU             /backbone/layer3/layer3.1/relu_2/Relu 1 1 /backbone/layer3/layer3.1/Add_output_0 /backbone/layer3/layer3.1/relu_2/Relu_output_0
+Split            splitncnn_9              1 2 /backbone/layer3/layer3.1/relu_2/Relu_output_0 /backbone/layer3/layer3.1/relu_2/Relu_output_0_splitncnn_0 /backbone/layer3/layer3.1/relu_2/Relu_output_0_splitncnn_1
+Convolution      /backbone/layer3/layer3.2/conv1/Conv 1 1 /backbone/layer3/layer3.1/relu_2/Relu_output_0_splitncnn_1 /backbone/layer3/layer3.2/conv1/Conv_output_0 0=256 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=262144
+ReLU             /backbone/layer3/layer3.2/relu/Relu 1 1 /backbone/layer3/layer3.2/conv1/Conv_output_0 /backbone/layer3/layer3.2/relu/Relu_output_0
+Convolution      /backbone/layer3/layer3.2/conv2/Conv 1 1 /backbone/layer3/layer3.2/relu/Relu_output_0 /backbone/layer3/layer3.2/conv2/Conv_output_0 0=256 1=3 11=3 2=2 12=2 3=1 13=1 4=2 14=2 15=2 16=2 5=1 6=589824
+ReLU             /backbone/layer3/layer3.2/relu_1/Relu 1 1 /backbone/layer3/layer3.2/conv2/Conv_output_0 /backbone/layer3/layer3.2/relu_1/Relu_output_0
+Convolution      /backbone/layer3/layer3.2/conv3/Conv 1 1 /backbone/layer3/layer3.2/relu_1/Relu_output_0 /backbone/layer3/layer3.2/conv3/Conv_output_0 0=1024 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=262144
+BinaryOp         /backbone/layer3/layer3.2/Add 2 1 /backbone/layer3/layer3.2/conv3/Conv_output_0 /backbone/layer3/layer3.1/relu_2/Relu_output_0_splitncnn_0 /backbone/layer3/layer3.2/Add_output_0 0=0
+ReLU             /backbone/layer3/layer3.2/relu_2/Relu 1 1 /backbone/layer3/layer3.2/Add_output_0 /backbone/layer3/layer3.2/relu_2/Relu_output_0
+Split            splitncnn_10             1 2 /backbone/layer3/layer3.2/relu_2/Relu_output_0 /backbone/layer3/layer3.2/relu_2/Relu_output_0_splitncnn_0 /backbone/layer3/layer3.2/relu_2/Relu_output_0_splitncnn_1
+Convolution      /backbone/layer3/layer3.3/conv1/Conv 1 1 /backbone/layer3/layer3.2/relu_2/Relu_output_0_splitncnn_1 /backbone/layer3/layer3.3/conv1/Conv_output_0 0=256 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=262144
+ReLU             /backbone/layer3/layer3.3/relu/Relu 1 1 /backbone/layer3/layer3.3/conv1/Conv_output_0 /backbone/layer3/layer3.3/relu/Relu_output_0
+Convolution      /backbone/layer3/layer3.3/conv2/Conv 1 1 /backbone/layer3/layer3.3/relu/Relu_output_0 /backbone/layer3/layer3.3/conv2/Conv_output_0 0=256 1=3 11=3 2=2 12=2 3=1 13=1 4=2 14=2 15=2 16=2 5=1 6=589824
+ReLU             /backbone/layer3/layer3.3/relu_1/Relu 1 1 /backbone/layer3/layer3.3/conv2/Conv_output_0 /backbone/layer3/layer3.3/relu_1/Relu_output_0
+Convolution      /backbone/layer3/layer3.3/conv3/Conv 1 1 /backbone/layer3/layer3.3/relu_1/Relu_output_0 /backbone/layer3/layer3.3/conv3/Conv_output_0 0=1024 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=262144
+BinaryOp         /backbone/layer3/layer3.3/Add 2 1 /backbone/layer3/layer3.3/conv3/Conv_output_0 /backbone/layer3/layer3.2/relu_2/Relu_output_0_splitncnn_0 /backbone/layer3/layer3.3/Add_output_0 0=0
+ReLU             /backbone/layer3/layer3.3/relu_2/Relu 1 1 /backbone/layer3/layer3.3/Add_output_0 /backbone/layer3/layer3.3/relu_2/Relu_output_0
+Split            splitncnn_11             1 2 /backbone/layer3/layer3.3/relu_2/Relu_output_0 /backbone/layer3/layer3.3/relu_2/Relu_output_0_splitncnn_0 /backbone/layer3/layer3.3/relu_2/Relu_output_0_splitncnn_1
+Convolution      /backbone/layer3/layer3.4/conv1/Conv 1 1 /backbone/layer3/layer3.3/relu_2/Relu_output_0_splitncnn_1 /backbone/layer3/layer3.4/conv1/Conv_output_0 0=256 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=262144
+ReLU             /backbone/layer3/layer3.4/relu/Relu 1 1 /backbone/layer3/layer3.4/conv1/Conv_output_0 /backbone/layer3/layer3.4/relu/Relu_output_0
+Convolution      /backbone/layer3/layer3.4/conv2/Conv 1 1 /backbone/layer3/layer3.4/relu/Relu_output_0 /backbone/layer3/layer3.4/conv2/Conv_output_0 0=256 1=3 11=3 2=2 12=2 3=1 13=1 4=2 14=2 15=2 16=2 5=1 6=589824
+ReLU             /backbone/layer3/layer3.4/relu_1/Relu 1 1 /backbone/layer3/layer3.4/conv2/Conv_output_0 /backbone/layer3/layer3.4/relu_1/Relu_output_0
+Convolution      /backbone/layer3/layer3.4/conv3/Conv 1 1 /backbone/layer3/layer3.4/relu_1/Relu_output_0 /backbone/layer3/layer3.4/conv3/Conv_output_0 0=1024 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=262144
+BinaryOp         /backbone/layer3/layer3.4/Add 2 1 /backbone/layer3/layer3.4/conv3/Conv_output_0 /backbone/layer3/layer3.3/relu_2/Relu_output_0_splitncnn_0 /backbone/layer3/layer3.4/Add_output_0 0=0
+ReLU             /backbone/layer3/layer3.4/relu_2/Relu 1 1 /backbone/layer3/layer3.4/Add_output_0 /backbone/layer3/layer3.4/relu_2/Relu_output_0
+Split            splitncnn_12             1 2 /backbone/layer3/layer3.4/relu_2/Relu_output_0 /backbone/layer3/layer3.4/relu_2/Relu_output_0_splitncnn_0 /backbone/layer3/layer3.4/relu_2/Relu_output_0_splitncnn_1
+Convolution      /backbone/layer3/layer3.5/conv1/Conv 1 1 /backbone/layer3/layer3.4/relu_2/Relu_output_0_splitncnn_1 /backbone/layer3/layer3.5/conv1/Conv_output_0 0=256 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=262144
+ReLU             /backbone/layer3/layer3.5/relu/Relu 1 1 /backbone/layer3/layer3.5/conv1/Conv_output_0 /backbone/layer3/layer3.5/relu/Relu_output_0
+Convolution      /backbone/layer3/layer3.5/conv2/Conv 1 1 /backbone/layer3/layer3.5/relu/Relu_output_0 /backbone/layer3/layer3.5/conv2/Conv_output_0 0=256 1=3 11=3 2=2 12=2 3=1 13=1 4=2 14=2 15=2 16=2 5=1 6=589824
+ReLU             /backbone/layer3/layer3.5/relu_1/Relu 1 1 /backbone/layer3/layer3.5/conv2/Conv_output_0 /backbone/layer3/layer3.5/relu_1/Relu_output_0
+Convolution      /backbone/layer3/layer3.5/conv3/Conv 1 1 /backbone/layer3/layer3.5/relu_1/Relu_output_0 /backbone/layer3/layer3.5/conv3/Conv_output_0 0=1024 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=262144
+BinaryOp         /backbone/layer3/layer3.5/Add 2 1 /backbone/layer3/layer3.5/conv3/Conv_output_0 /backbone/layer3/layer3.4/relu_2/Relu_output_0_splitncnn_0 /backbone/layer3/layer3.5/Add_output_0 0=0
+ReLU             /backbone/layer3/layer3.5/relu_2/Relu 1 1 /backbone/layer3/layer3.5/Add_output_0 /backbone/layer3/layer3.5/relu_2/Relu_output_0
+Split            splitncnn_13             1 3 /backbone/layer3/layer3.5/relu_2/Relu_output_0 /backbone/layer3/layer3.5/relu_2/Relu_output_0_splitncnn_0 /backbone/layer3/layer3.5/relu_2/Relu_output_0_splitncnn_1 /backbone/layer3/layer3.5/relu_2/Relu_output_0_splitncnn_2
+Convolution      /backbone/layer4/layer4.0/conv1/Conv 1 1 /backbone/layer3/layer3.5/relu_2/Relu_output_0_splitncnn_2 /backbone/layer4/layer4.0/conv1/Conv_output_0 0=512 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=524288
+Convolution      /backbone/layer4/layer4.0/downsample/downsample.0/Conv 1 1 /backbone/layer3/layer3.5/relu_2/Relu_output_0_splitncnn_1 /backbone/layer4/layer4.0/downsample/downsample.0/Conv_output_0 0=2048 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=2097152
+Convolution      /aux_classifier/aux_classifier.0/Conv 1 1 /backbone/layer3/layer3.5/relu_2/Relu_output_0_splitncnn_0 /aux_classifier/aux_classifier.0/Conv_output_0 0=256 1=3 11=3 2=1 12=1 3=1 13=1 4=1 14=1 15=1 16=1 5=1 6=2359296
+ReLU             /backbone/layer4/layer4.0/relu/Relu 1 1 /backbone/layer4/layer4.0/conv1/Conv_output_0 /backbone/layer4/layer4.0/relu/Relu_output_0
+ReLU             /aux_classifier/aux_classifier.2/Relu 1 1 /aux_classifier/aux_classifier.0/Conv_output_0 /aux_classifier/aux_classifier.2/Relu_output_0
+Convolution      /backbone/layer4/layer4.0/conv2/Conv 1 1 /backbone/layer4/layer4.0/relu/Relu_output_0 /backbone/layer4/layer4.0/conv2/Conv_output_0 0=512 1=3 11=3 2=2 12=2 3=1 13=1 4=2 14=2 15=2 16=2 5=1 6=2359296
+Convolution      /aux_classifier/aux_classifier.4/Conv 1 1 /aux_classifier/aux_classifier.2/Relu_output_0 /aux_classifier/aux_classifier.4/Conv_output_0 0=21 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=5376
+ReLU             /backbone/layer4/layer4.0/relu_1/Relu 1 1 /backbone/layer4/layer4.0/conv2/Conv_output_0 /backbone/layer4/layer4.0/relu_1/Relu_output_0
+Interp           /Resize_1                1 1 /aux_classifier/aux_classifier.4/Conv_output_0 613 0=2 1=1.000000e+00 2=1.000000e+00 3=512 4=512 6=0
+Convolution      /backbone/layer4/layer4.0/conv3/Conv 1 1 /backbone/layer4/layer4.0/relu_1/Relu_output_0 /backbone/layer4/layer4.0/conv3/Conv_output_0 0=2048 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=1048576
+BinaryOp         /backbone/layer4/layer4.0/Add 2 1 /backbone/layer4/layer4.0/conv3/Conv_output_0 /backbone/layer4/layer4.0/downsample/downsample.0/Conv_output_0 /backbone/layer4/layer4.0/Add_output_0 0=0
+ReLU             /backbone/layer4/layer4.0/relu_2/Relu 1 1 /backbone/layer4/layer4.0/Add_output_0 /backbone/layer4/layer4.0/relu_2/Relu_output_0
+Split            splitncnn_14             1 2 /backbone/layer4/layer4.0/relu_2/Relu_output_0 /backbone/layer4/layer4.0/relu_2/Relu_output_0_splitncnn_0 /backbone/layer4/layer4.0/relu_2/Relu_output_0_splitncnn_1
+Convolution      /backbone/layer4/layer4.1/conv1/Conv 1 1 /backbone/layer4/layer4.0/relu_2/Relu_output_0_splitncnn_1 /backbone/layer4/layer4.1/conv1/Conv_output_0 0=512 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=1048576
+ReLU             /backbone/layer4/layer4.1/relu/Relu 1 1 /backbone/layer4/layer4.1/conv1/Conv_output_0 /backbone/layer4/layer4.1/relu/Relu_output_0
+Convolution      /backbone/layer4/layer4.1/conv2/Conv 1 1 /backbone/layer4/layer4.1/relu/Relu_output_0 /backbone/layer4/layer4.1/conv2/Conv_output_0 0=512 1=3 11=3 2=4 12=4 3=1 13=1 4=4 14=4 15=4 16=4 5=1 6=2359296
+ReLU             /backbone/layer4/layer4.1/relu_1/Relu 1 1 /backbone/layer4/layer4.1/conv2/Conv_output_0 /backbone/layer4/layer4.1/relu_1/Relu_output_0
+Convolution      /backbone/layer4/layer4.1/conv3/Conv 1 1 /backbone/layer4/layer4.1/relu_1/Relu_output_0 /backbone/layer4/layer4.1/conv3/Conv_output_0 0=2048 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=1048576
+BinaryOp         /backbone/layer4/layer4.1/Add 2 1 /backbone/layer4/layer4.1/conv3/Conv_output_0 /backbone/layer4/layer4.0/relu_2/Relu_output_0_splitncnn_0 /backbone/layer4/layer4.1/Add_output_0 0=0
+ReLU             /backbone/layer4/layer4.1/relu_2/Relu 1 1 /backbone/layer4/layer4.1/Add_output_0 /backbone/layer4/layer4.1/relu_2/Relu_output_0
+Split            splitncnn_15             1 2 /backbone/layer4/layer4.1/relu_2/Relu_output_0 /backbone/layer4/layer4.1/relu_2/Relu_output_0_splitncnn_0 /backbone/layer4/layer4.1/relu_2/Relu_output_0_splitncnn_1
+Convolution      /backbone/layer4/layer4.2/conv1/Conv 1 1 /backbone/layer4/layer4.1/relu_2/Relu_output_0_splitncnn_1 /backbone/layer4/layer4.2/conv1/Conv_output_0 0=512 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=1048576
+ReLU             /backbone/layer4/layer4.2/relu/Relu 1 1 /backbone/layer4/layer4.2/conv1/Conv_output_0 /backbone/layer4/layer4.2/relu/Relu_output_0
+Convolution      /backbone/layer4/layer4.2/conv2/Conv 1 1 /backbone/layer4/layer4.2/relu/Relu_output_0 /backbone/layer4/layer4.2/conv2/Conv_output_0 0=512 1=3 11=3 2=4 12=4 3=1 13=1 4=4 14=4 15=4 16=4 5=1 6=2359296
+ReLU             /backbone/layer4/layer4.2/relu_1/Relu 1 1 /backbone/layer4/layer4.2/conv2/Conv_output_0 /backbone/layer4/layer4.2/relu_1/Relu_output_0
+Convolution      /backbone/layer4/layer4.2/conv3/Conv 1 1 /backbone/layer4/layer4.2/relu_1/Relu_output_0 /backbone/layer4/layer4.2/conv3/Conv_output_0 0=2048 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=1048576
+BinaryOp         /backbone/layer4/layer4.2/Add 2 1 /backbone/layer4/layer4.2/conv3/Conv_output_0 /backbone/layer4/layer4.1/relu_2/Relu_output_0_splitncnn_0 /backbone/layer4/layer4.2/Add_output_0 0=0
+ReLU             /backbone/layer4/layer4.2/relu_2/Relu 1 1 /backbone/layer4/layer4.2/Add_output_0 /backbone/layer4/layer4.2/relu_2/Relu_output_0
+Split            splitncnn_16             1 5 /backbone/layer4/layer4.2/relu_2/Relu_output_0 /backbone/layer4/layer4.2/relu_2/Relu_output_0_splitncnn_0 /backbone/layer4/layer4.2/relu_2/Relu_output_0_splitncnn_1 /backbone/layer4/layer4.2/relu_2/Relu_output_0_splitncnn_2 /backbone/layer4/layer4.2/relu_2/Relu_output_0_splitncnn_3 /backbone/layer4/layer4.2/relu_2/Relu_output_0_splitncnn_4
+Convolution      /classifier/classifier.0/convs.0/convs.0.0/Conv 1 1 /backbone/layer4/layer4.2/relu_2/Relu_output_0_splitncnn_4 /classifier/classifier.0/convs.0/convs.0.0/Conv_output_0 0=256 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=524288
+Convolution      /classifier/classifier.0/convs.1/convs.1.0/Conv 1 1 /backbone/layer4/layer4.2/relu_2/Relu_output_0_splitncnn_3 /classifier/classifier.0/convs.1/convs.1.0/Conv_output_0 0=256 1=3 11=3 2=12 12=12 3=1 13=1 4=12 14=12 15=12 16=12 5=1 6=4718592
+Convolution      /classifier/classifier.0/convs.2/convs.2.0/Conv 1 1 /backbone/layer4/layer4.2/relu_2/Relu_output_0_splitncnn_2 /classifier/classifier.0/convs.2/convs.2.0/Conv_output_0 0=256 1=3 11=3 2=24 12=24 3=1 13=1 4=24 14=24 15=24 16=24 5=1 6=4718592
+Convolution      /classifier/classifier.0/convs.3/convs.3.0/Conv 1 1 /backbone/layer4/layer4.2/relu_2/Relu_output_0_splitncnn_1 /classifier/classifier.0/convs.3/convs.3.0/Conv_output_0 0=256 1=3 11=3 2=36 12=36 3=1 13=1 4=36 14=36 15=36 16=36 5=1 6=4718592
+Pooling          /classifier/classifier.0/convs.4/convs.4.0/GlobalAveragePool 1 1 /backbone/layer4/layer4.2/relu_2/Relu_output_0_splitncnn_0 /classifier/classifier.0/convs.4/convs.4.0/GlobalAveragePool_output_0 0=1 4=1
+ReLU             /classifier/classifier.0/convs.0/convs.0.2/Relu 1 1 /classifier/classifier.0/convs.0/convs.0.0/Conv_output_0 /classifier/classifier.0/convs.0/convs.0.2/Relu_output_0
+ReLU             /classifier/classifier.0/convs.1/convs.1.2/Relu 1 1 /classifier/classifier.0/convs.1/convs.1.0/Conv_output_0 /classifier/classifier.0/convs.1/convs.1.2/Relu_output_0
+ReLU             /classifier/classifier.0/convs.2/convs.2.2/Relu 1 1 /classifier/classifier.0/convs.2/convs.2.0/Conv_output_0 /classifier/classifier.0/convs.2/convs.2.2/Relu_output_0
+ReLU             /classifier/classifier.0/convs.3/convs.3.2/Relu 1 1 /classifier/classifier.0/convs.3/convs.3.0/Conv_output_0 /classifier/classifier.0/convs.3/convs.3.2/Relu_output_0
+Convolution      /classifier/classifier.0/convs.4/convs.4.1/Conv 1 1 /classifier/classifier.0/convs.4/convs.4.0/GlobalAveragePool_output_0 /classifier/classifier.0/convs.4/convs.4.1/Conv_output_0 0=256 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=524288
+ReLU             /classifier/classifier.0/convs.4/convs.4.3/Relu 1 1 /classifier/classifier.0/convs.4/convs.4.1/Conv_output_0 /classifier/classifier.0/convs.4/convs.4.3/Relu_output_0
+Interp           /classifier/classifier.0/convs.4/Resize 1 1 /classifier/classifier.0/convs.4/convs.4.3/Relu_output_0 /classifier/classifier.0/convs.4/Resize_output_0 0=2 1=1.000000e+00 2=1.000000e+00 3=64 4=64 6=0
+Concat           /classifier/classifier.0/Concat 5 1 /classifier/classifier.0/convs.0/convs.0.2/Relu_output_0 /classifier/classifier.0/convs.1/convs.1.2/Relu_output_0 /classifier/classifier.0/convs.2/convs.2.2/Relu_output_0 /classifier/classifier.0/convs.3/convs.3.2/Relu_output_0 /classifier/classifier.0/convs.4/Resize_output_0 /classifier/classifier.0/Concat_output_0 0=0
+Convolution      /classifier/classifier.0/project/project.0/Conv 1 1 /classifier/classifier.0/Concat_output_0 /classifier/classifier.0/project/project.0/Conv_output_0 0=256 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=327680
+ReLU             /classifier/classifier.0/project/project.2/Relu 1 1 /classifier/classifier.0/project/project.0/Conv_output_0 /classifier/classifier.0/project/project.2/Relu_output_0
+Convolution      /classifier/classifier.1/Conv 1 1 /classifier/classifier.0/project/project.2/Relu_output_0 /classifier/classifier.1/Conv_output_0 0=256 1=3 11=3 2=1 12=1 3=1 13=1 4=1 14=1 15=1 16=1 5=1 6=589824
+ReLU             /classifier/classifier.3/Relu 1 1 /classifier/classifier.1/Conv_output_0 /classifier/classifier.3/Relu_output_0
+Convolution      /classifier/classifier.4/Conv 1 1 /classifier/classifier.3/Relu_output_0 /classifier/classifier.4/Conv_output_0 0=21 1=1 11=1 2=1 12=1 3=1 13=1 4=0 14=0 15=0 16=0 5=1 6=5376
+Interp           /Resize                  1 1 /classifier/classifier.4/Conv_output_0 output 0=2 1=1.000000e+00 2=1.000000e+00 3=512 4=512 6=0
