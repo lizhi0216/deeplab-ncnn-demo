@@ -11,9 +11,9 @@
 3. inference  
    bin/deeplab image/bus.jpg  
      
-4.inference file     
-  deeplab.cpp  
+  4.inference file     
+    deeplab.cpp  
     
-5.quantize tools  
-  ppq  
-  ncnn  
+  5.quantize tools  
+    ppq  
+    ncnn  
