@@ -8,7 +8,11 @@
    cmake CMakeLists.txt  
    make  
      
-3. inference  
+3. inference
+   
+4. inference file
+   
+5. quantize tools
    bin/deeplab image/bus.jpg  
      
   4.inference file     
